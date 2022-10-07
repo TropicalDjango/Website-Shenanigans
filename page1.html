@@ -1,0 +1,47 @@
+<doctype html>
+<html>
+	<body>
+		<ol>
+			<li><a href="index.html">Home</a></li>
+			<li><a href = "page2.html">Schedule</a></li>
+			<li>README ASSIGNMENT 1</li>
+			
+		</ol>
+		<p class='assign'>
+=========================<br>
+Name: Ahmed Refik<br>
+Id:1573813<br>
+CMPUT 274, Fall 2019<br>
+<br>
+Assignment 1: Huffman Coding<br>
+=========================<br>
+<br>
+Running Instructions:<br>
+- Make sure utili.py is in the same directory as all the other files.<br>
+<br>
+Assumptions:<br>
+<br>
+- The file called to compress or decompress exists.<br>
+- The streams are opened in binary read or write mode for compressed and uncompressed streams.<br>
+<br>
+Functions:<br>
+<br>
+- str2bin() is a function that takes a string as input and outs a string with all the letters converted into their corresponding binary value with leading zeros included.
+(ex. ' ' = ' 00100000')<br>
+<br>
+-read_tree() is a function that takes a compressed file stream opened in binary read mode and pickle.loads() a huffman tree from the file.<br>
+<br>
+-decode_byte() is a function that takes a huffman tree and a compressed file stream, traverses the tree and decodes the first byte of the file stream<br>
+<br>
+-decompress() is a function that takes a compressed file stream to binary read from and a decompressed stream to binray write in. decompress() calls decode_byte() until it reads the entire compressed file stream, then it uses str2bin() to get the file in ASCII binary form, then uses bitio.BitWriter to write the binary string<br>
+<br>
+-write_tree() is a function that takes a huffman tree and a file stream opened in write binary mode. write_tree() uses pickle.dump to dump the tree into the file<br>
+<br>
+-compress() is a function that takes a decompressed file stream to binary read from and a compressed file stream to binary write into. First it uses bitio.BitReader to read the entire decompressed file with each base-2 binary letter seperated by a space, then it turns the string into a list and converts each list index into a letter (except the last index as it is the EOF so it's turned into None). It then uses huffman.make_encoding_table() to create a dictonary of all letters and their equivalalent boolean values. Then it uses bitio.BitWriter to write the boolean expression for each index in the list.<br>
+(ex. 'Hi'(in a file)  => '01101000 01101001 ' => ['01101000','01101001',''] => ['H','i',None] ) => [False,[True,False],[True True]]<br>
+		</p>
+		<link href= "main.css" rel="stylesheet"/>
+
+
+	</body>
+</html>
